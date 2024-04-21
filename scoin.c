@@ -123,7 +123,7 @@ int verifyhash(unsigned int *block)
     // unsigned nonce_end = 497822588 + SATCNF;
     // __CPROVER_assume(*u_nonce > nonce_start && *u_nonce < nonce_end); // used nonce should stay in the given range
     
-__CPROVER_assume(*u_nonce > 1094385912 && *u_nonce < 1094386912);
+__CPROVER_assume(*u_nonce > 1029121194 && *u_nonce < 1029122194);
 #endif
 
     // The last 4 int's go together with some padding to make the second and final chunk.
@@ -214,24 +214,24 @@ assert(flag == 1);
     return (0);
 }
 
-unsigned int block_780008[20] = {0x0000a020,
-0xbe1e215c,
-0xf1768941,
-0xc33c4df3,
-0x5edb986d,
-0x80b0ae1e,
-0xcdd30200,
+unsigned int block_780009[20] = {0x0000c020,
+0x83bc9626,
+0xa00e3e51,
+0x11ab2873,
+0x98e8908e,
+0xc672a9a8,
+0x503a0200,
 0x00000000,
 0x00000000,
-0x5e40898a,
-0x628606fa,
-0x996e2442,
-0x3bd23990,
-0xca6fea14,
-0xbfb5a493,
-0x98e086be,
-0xe02b3e1f,
-0x92d60964,
+0x7a93e116,
+0x4679a741,
+0xdf2daad3,
+0x6626b459,
+0xcf1dc802,
+0x5f16512b,
+0x3db9eeb7,
+0x665047ea,
+0x6cd70964,
 0xa3890617,
-0x413b02ec};
-int main(int argc, void *argv[]){verifyhash(&block_780008[0]); return 0;}
+0x3d57269e};
+int main(int argc, void *argv[]){verifyhash(&block_780009[0]); return 0;}
