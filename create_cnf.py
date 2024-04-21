@@ -11,10 +11,10 @@ blocks_file = input("Please enter the name of the file which contains your block
 scoin_c = "scoin.c"
 nonce_range = input("Please enter the range of the nonces to search, as decimal number (e.g: 1k == 1000, etc...)\n")
 nonce_range = int(nonce_range) // 2 # It will encode a nonce range twice this size, as: start = nonce - nonce_range ; end = nonce + nonce_range | If entered 1000 then 1000 // 2 == 500...
+directory_name = input("Enter directory name which will contain the generated CNF files (if it doesn't exist, a new dir will be created)\n")
 
 scoin_lines = []
 blocks_lines = []
-directory_name = "TEST_CNF_FILES"
 generate_cnf_command = "cbmc " + scoin_c + " -DCBMC --dimacs --outfile {}"
 
 # Lines to replace (starting from 0-based index)
