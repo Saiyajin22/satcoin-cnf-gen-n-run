@@ -1,4 +1,3 @@
-import subprocess
 import os
 import btc_utils
 import block_query
@@ -21,16 +20,6 @@ generate_cnf_command = "cbmc " + scoin_c + " -DCBMC --dimacs --outfile {}"
 start_line = 216  # Line 217 in the file
 end_line = 235  # Line 236 in the file
 verify_hash_line = 236 # Line 237 in the file
-
-def execute_command(command):
-    try:
-        result = subprocess.run(command, shell=True, capture_output=False, text=True)
-        if result.stderr:
-            print("Errors:")
-            print(result.stderr)
-        print("Return code:", result.returncode) 
-    except Exception as e:
-        print("An Exception occurred:", e)
 
 # Program start
 if not os.path.exists(directory_name):
@@ -118,7 +107,7 @@ for i in range(len(blocks_lines)//20):
         file.writelines(scoin_lines)
     
     # Execute cnf generation
-    execute_command(generate_cnf_command.format(directory_name + "/" + block_name + ".cnf"))
+    btc_utils.execute_command(generate_cnf_command.format(directory_name + "/" + block_name + ".cnf"))
 
 
 print("CNF files generation ended")
