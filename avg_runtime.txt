@@ -1,0 +1,1 @@
+Average runtime of manysat over 1 cnf files: 0.0

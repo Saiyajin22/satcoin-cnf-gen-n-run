@@ -33,4 +33,7 @@ for filename in os.listdir(cnf_files_directory):
         file.write(runtime_line)
 
 avg_runtime = sum_of_runtimes / counter
-print("Average runtime of " + solver_name + " over " + str(counter) + " cnf files: " + str(avg_runtime))
+avg_runtime_line = "Average runtime of " + solver_name + " over " + str(counter) + " cnf files: " + str(avg_runtime)
+print(avg_runtime_line)
+with open("avg_runtime.txt", "w") as file:
+    file.write(avg_runtime_line)
