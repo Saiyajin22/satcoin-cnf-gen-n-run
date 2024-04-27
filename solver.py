@@ -5,8 +5,8 @@ import time
 print("Welcome to create sat solver runner script")
 cnf_files_directory = input("Please enter the name of the directory which holds your CNF files. Must be in this project's root dir.\n")
 sat_solver_results_directory = cnf_files_directory + "_txts"
-solver_name = input("Please enter the name of the SAT solver file which will run the solver.\n")
-run_solver_command = "./" + solver_name + " " + cnf_files_directory + "/{} > " + sat_solver_results_directory + "/{}"
+solver_name = input("Please enter the name of the SAT solver file which will run the solver. (If you use an executable file like manysat in this project's root dir, add './' at the beginning\n")
+run_solver_command = solver_name + " " + cnf_files_directory + "/{} > " + sat_solver_results_directory + "/{}"
 
 if not os.path.exists(sat_solver_results_directory):
     os.mkdir(sat_solver_results_directory)
