@@ -14,9 +14,11 @@ if not os.path.exists(sat_solver_results_directory):
 else:
     print(f"Directory '{sat_solver_results_directory}' already exists.")
 
+runtime_of_blocks = []
 counter = 1
 sum_of_runtimes = 0
-for filename in os.listdir(cnf_files_directory):
+file_list = sorted(os.listdir(cnf_files_directory))
+for filename in file_list:
     start_time = time.time()
     result_txt = filename.split(".")[0] + ".txt"
     command = run_solver_command.format(filename, result_txt)
@@ -26,14 +28,16 @@ for filename in os.listdir(cnf_files_directory):
     end_time = time.time()
     runtime = end_time - start_time
     sum_of_runtimes += runtime
-    runtime_line = "Runtime of solver: " + str(runtime) + " seconds"
+    runtime_line = "Runtime of solver on " + filename + ": " + str(runtime) + " seconds\n"
     print(runtime_line)
+    runtime_of_blocks.append(runtime_line)
 
     with open(sat_solver_results_directory + "/" + result_txt, "a") as file:
         file.write(runtime_line)
 
 avg_runtime = sum_of_runtimes / counter
-avg_runtime_line = "Average runtime of " + solver_name + " over " + str(counter) + " cnf files: " + str(avg_runtime)
+avg_runtime_line = "Average runtime of " + solver_name + " over " + str(counter) + " cnf files: " + str(avg_runtime) + "\n"
 print(avg_runtime_line)
+runtime_of_blocks.append(avg_runtime_line)
 with open("avg_runtime.txt", "w") as file:
-    file.write(avg_runtime_line)
+    file.writelines(runtime_of_blocks)
