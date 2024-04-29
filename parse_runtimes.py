@@ -24,4 +24,4 @@ avg_runtime = getAverageRuntime(runtime_map)
 
 solver_name = input("Enter used solver's name\n")
 chart_name = input("Enter your save file's name\n")
-plotter.plotSolverResults(runtime_map.keys(), runtime_map.values(), solver_name, chart_name, avg_runtime)
+plotter.plotSolverResults(runtime_map.keys(), runtime_map.values(), solver_name, chart_name, avg_runtime, True)
