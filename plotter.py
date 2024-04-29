@@ -8,7 +8,7 @@ def plotSolverResults(blocks, runtimes, solver_name, saveFileName: str, avg_runt
     plt.title("Runtime for solver: " + solver_name + " on " + str(len(runtimes)) + " different blocks. Avg: " + str(avg_runtime))
 
     if hide_x:
-        plt.xticks([])
+        plt.xticks(list(blocks)[0])
 
     if len(saveFileName) > 0:
         plt.savefig(saveFileName)
