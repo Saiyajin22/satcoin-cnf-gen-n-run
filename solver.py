@@ -5,8 +5,11 @@ import plotter
 
 print("Welcome to create sat solver runner script")
 cnf_files_directory = input("Please enter the name of the directory which holds your CNF files. Must be in this project's root dir.\n")
-sat_solver_results_directory = cnf_files_directory + "_txts"
 solver_name = input("Please enter the name of the SAT solver file which will run the solver. (If you use an executable file like manysat in this project's root dir, add './' at the beginning\n")
+if solver_name.startswith("./"):
+    sat_solver_results_directory = cnf_files_directory + "_" + solver_name.split("/")[1] + "_txts"
+else:
+    sat_solver_results_directory = cnf_files_directory + "_" + solver_name + "_txts"
 run_solver_command = solver_name + " " + cnf_files_directory + "/{} > " + sat_solver_results_directory + "/{}"
 
 if not os.path.exists(sat_solver_results_directory):
